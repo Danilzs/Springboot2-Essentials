@@ -33,7 +33,7 @@ public class AnimeController {
 
     @GetMapping(path = "/{id}")
 
-    public ResponseEntity<Anime> findById(@PathVariable Long id) {
+    public ResponseEntity<Anime> findById(@PathVariable long id) {
         return ResponseEntity.ok(animeService.findById(id));
 
     }
@@ -42,5 +42,11 @@ public class AnimeController {
 
         return new ResponseEntity<>(animeService.save(anime), HttpStatus.CREATED);
     }
+    @DeleteMapping(path = "/{id}")
 
+    public ResponseEntity<Void> delete(@PathVariable long id) {
+        animeService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+    }
 }
