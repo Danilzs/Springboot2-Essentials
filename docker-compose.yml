@@ -1,15 +1,18 @@
-version: '3.1'
 services:
   db:
-    image: mysql
+    image: mysql:8.0
     container_name: mysql
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: springdb
+      MYSQL_USER: danilo
+      MYSQL_PASSWORD: danilo
     ports:
       - "3306:3306"
     volumes:
       - devdojo_data:/var/lib/mysql
-
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
 volumes:
   devdojo_data:
